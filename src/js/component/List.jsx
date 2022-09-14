@@ -1,12 +1,20 @@
 
+import { element } from "prop-types";
 import React, { useState } from "react";
 
 const List = () => {
   const [todolist, setTodolilst] = useState([]);
+ 
 
   const addList = (element) => {
     setTodolilst([...todolist, element]);
   };
+  const borrar =(i)=>{
+
+    const newset=todolist.filter(element=>i !==i)
+    setTodolilst(newset)
+  
+  }
 
   return (
     <div className="list">
@@ -23,9 +31,9 @@ const List = () => {
       <div className="">
         <ul>
           {todolist.map((item, i) => (
-            <li key={i}>{item} <button>X</button></li>
+            <li key={i}>{item} <button onClick={borrar}>X</button></li>
           ))}
-          <p>{todolist.length +" elements left"}</p>
+          <p>{todolist.length ==0?"no hay elementos en la lista":todolist.length +" elements left"}</p>
         </ul>
       </div>
     </div>
